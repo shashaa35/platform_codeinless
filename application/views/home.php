@@ -16,10 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		form.action="<?php echo base_url()?>index.php/Main/signup";
 		form.submit();
 	}
-	
 </script>
-
-
 <h2>Register or Login</h2>
 <h3><?php if(!empty($message))echo $message;?></h3>
 <form method="get" id="register" action="<?php echo base_url()?>index.php/Main/login">
@@ -27,6 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<p>Password</p><input type="password" name="password"/><br>
 	<button type="submit"  id="run" >LOGIN</button>
 </form>
-<button onclick="signup()">Sign Up</button>
+<a href="<?php echo base_url()?>index.php/home/register"><div style="height:20px;width:90px;box-shadow: 0px 0px 5px #888888">Register</div></a>
+
 </body>
 </html>

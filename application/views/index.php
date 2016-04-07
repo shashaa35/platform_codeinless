@@ -13,10 +13,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 <h2>IDE</h2>
+<a href="<?php echo base_url()?>index.php/home/questions"><div style="height:20px;width:90px;box-shadow: 0px 0px 5px #888888">Back</div></a>
 <form method="post" id="code" action="<?php echo base_url()?>index.php/Main/run">
 	<select name="lang" id="lang">
 	<option value="C">C</option>
-	<option value="CPP11">C++</option>
+	<option value="CPP">C++</option>
 	<option value="JAVA">JAVA</option>
 	<option value="PYTHON">Python</option>
 </select>
@@ -26,10 +27,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<option value="3">Question 3</option>
 	<option value="4">Question 4</option>
 </select><br>
-	<textarea rows="30" cols="130" name="code" id="code">
-	</textarea>
+	<textarea id="myInput" rows="30" cols="130" name="code" id="code"></textarea>
 	<br>
 	<button type="submit" value="Submit" id="run" >SUBMIT</button>
 </form>
+<script type="text/javascript">
+    var myInput = document.getElementById("myInput");
+    if(myInput.addEventListener ) {
+        myInput.addEventListener('keydown',this.keyHandler,false);
+    } else if(myInput.attachEvent ) {
+        myInput.attachEvent('onkeydown',this.keyHandler); /* damn IE hack */
+    }
+
+    function keyHandler(e) {
+        var TABKEY = 9;
+        if(e.keyCode == TABKEY) {
+            this.value += "    ";
+            if(e.preventDefault) {
+                e.preventDefault();
+            }
+            return false;
+        }
+    }
+</script>
 </body>
 </html>

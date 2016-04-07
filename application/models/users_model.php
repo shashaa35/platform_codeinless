@@ -51,13 +51,17 @@ class users_model extends CI_Model {
         $best=$result1[0][$q_no];
         if($length<$best)
         {
+            $a="boss";
             echo "$user are best till now in this question..";
-            $sql1="UPDATE length_table SET $q_no=$length WHERE username='boss' and password='boss'";
+            $sql1="UPDATE length_table SET $q_no=$length WHERE username='$a' and password='$a'";
             $query1 =$this->db->query($sql1);
+            $sql="UPDATE length_table SET $q_no=$length WHERE username='$user' and password='$pass'";
+            $query =$this->db->query($sql);
+            
             $sql2="UPDATE users,length_table SET 
-            users.$q_no=if(100-(length_table.$q_no-$length)<0,0,100-(length_table.$q_no-$length)) 
+            users.$q_no=IF((100-(length_table.$q_no-$length))<0 ,IF((length_table.$q_no-$length)>5000,0,20),100-(length_table.$q_no-$length)) 
             where users.username=length_table.username and users.password=length_table.password";
-            $query1 =$this->db->query($sql2);
+            $query1 =$this->db->query($sql2); 
         }
         return $best;
         // if(sizeof($result1)<=0 || sizeof($query1)<=0)
@@ -69,21 +73,21 @@ class users_model extends CI_Model {
         $sql1 = "SELECT $q_no FROM length_table WHERE username='$user' and password='$password'";   
         $q = $this->db->query($sql1);
         $result = $q->result_array();
+        //var_dump($result);
         $prev = $result[0][$q_no];
         if($length<$prev)
           {
             $sql2="UPDATE length_table SET $q_no=$length WHERE username='$user' and password='$password'";
             $query1 =$this->db->query($sql2);
             //check error has to done
-            echo $q_no." ->";
             $score=100-(intVal($length)-intVal($best));
-            echo $score;
             if($score<20)
                 $score=20;
     $sql3="UPDATE users SET $q_no=$score WHERE username='$user' and password='$password'";
             $query2 =$this->db->query($sql3);
             
             //update points
+            echo "your score is ".$score."and length is ".$length;
           }
            
 

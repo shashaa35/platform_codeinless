@@ -43,6 +43,10 @@ class Main extends CI_Controller {
 
 		$this->load->view('index.php');
 	}
+	public function register()
+	{
+		$this->load->view('register.php');
+	}
 	public function signup()
 	{
 		
@@ -50,9 +54,9 @@ class Main extends CI_Controller {
 		$password=$this->input->get("password");
 		$status=$this->users_model->signup($username,$password);
 		if($status)
-			echo "done";
+			$this->load->view('welcome.php');
 		else
-			echo "error";	
+			echo "error";
 	}
 	public function login()
 	{
@@ -81,6 +85,17 @@ class Main extends CI_Controller {
 		$this->session->unset_userdata('username');
 		$this->session->unset_userdata('password');
 		$this->load->view('home.php');
+	}
+	public function questions()
+	{
+		$username=$this->session->userdata('username');
+		if(empty($username))
+		{
+			$data['message']="please login to view";
+			$this->load->view('home.php',$data);
+			return;
+		}
+		$this->load->view("questions.php");
 	}
 	public function question($i)
 	{
@@ -156,7 +171,7 @@ class Main extends CI_Controller {
 	if($compile_status==="OK")
 	{
 		//correct output file
-		echo "COMPILATION PASSED<br>";
+		$data['message']="COMPILATION PASSED<br>";
 		$out_filename=$res[0]['output_file'];
 		$output_file="C:/xampp/htdocs/ide/output_files/$out_filename";
 		$str=file_get_contents($output_file);
@@ -167,21 +182,30 @@ class Main extends CI_Controller {
 		$res=explode("\n",$str1);
 		$flag=1;
 		//echo sizeof($res)." ";
+		if(sizeof($res)==1)
+			$flag=0;
+		if(sizeof($res)==sizeof($str))
+		{
 		for($i=0;$i<sizeof($res)-1;$i++)
 		{
+				
 			if(strcmp(trim($res[$i]),trim($str[$i]))!=0)
 			{
+			
 				$flag=0;
-				var_dump($str[$i]);
-				var_dump($res[$i]);
+				//var_dump($str[$i]);
+				//var_dump($res[$i]);
 				 // echo $str[$i]." ".$res[$i]."<br>";
 			}
 			// else $str[$i]." ".$res[$i]."<br>";	
 		}
-			
+	}
+	else
+		{$flag=0;
+			}
 		if ($flag==1) 
 		{
-			echo "CORRECT ANSWER!!";
+			$data['message'].="CORRECT ANSWER!!";
 			$length=strlen($code);
 			$username=$this->session->userdata('username');
 			$password=$this->session->userdata('password');
@@ -189,18 +213,18 @@ class Main extends CI_Controller {
 			$this->users_model->update_pts($username,$password,$q_no."_".$lang,$length);
 		}
 		else
-			echo "WA";
+			$data['message'].="WA";
 		$i=0;
 	}
 	else if($compile_status==NULL)
 	{
-		echo "Please refresh this page again ..<br>Net is not working ..";
+		$data['message']="Please refresh this page again ..<br>Net is not working ..";
 	}
 	else
 	{	
-		echo "compilation not passed";
-	$this->load->view("status.php",$data);	
+		$data['message']="compilation not passed";
 	}
+	$this->load->view("status.php",$data);	
 	}
 
 }
