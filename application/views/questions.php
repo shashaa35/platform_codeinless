@@ -1,33 +1,97 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
-<html>
-<head>
-	<title>Question Page</title>
-</head>
-<body>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
-	<link rel='stylesheet' type='text/css' href='http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css'/>
+?>
+<!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="shortcut icon" type="image/x-icon" href="img/icon.png">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="<?php echo base_url() ?>css/materialize.min.css"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="<?php echo base_url() ?>css/style.css"  media="screen,projection"/>
 
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
 
-<h2>Welcome</h2>
-<a href="<?php echo base_url()?>index.php/home/logout"><div style="height:20px;width:90px;box-shadow: 0px 0px 5px #888888">Log Out</div></a>
-<div >
-	<li><a href="<?php echo base_url()?>index.php/home/login/1">Question 1</a></li>
-<!--<li><a href="<?php echo base_url()?>index.php/home/login/2">Question 2</a></li>
-<li><a href="<?php echo base_url()?>index.php/home/login/3">Question 3</a></li>
-<li><a href="<?php echo base_url()?>index.php/home/login/4">Question 4</a></li>
-<li><a href="<?php echo base_url()?>index.php/home/login/5">Question 5</a></li>
-<li><a href="<?php echo base_url()?>index.php/home/login/6">Question 6</a></li>
-<li><a href="<?php echo base_url()?>index.php/home/login/7">Question 7</a></li>
--->
-</div>
-<br><br>
-<a href="<?php echo base_url()?>"><div style="height:20px;width:50px;box-shadow: 0px 0px 5px #888888">test run</div></a>
+    <body>
 
-<a href="<?php echo base_url()?>index.php/home/leaderboard"><div style="height:20px;width:100px;box-shadow: 0px 0px 5px #888888">Leaderboard</div></a>
+      <nav>
+        <div class="nav-wrapper">
+          <a href="<?php echo base_url()?>index.php/home/questions" class="brand-logo"><img src="<?php echo base_url() ?>img/head.png"></a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="<?php echo base_url()?>index.php/home/questions">HOME</a></li>
+            <li><a href="<?php echo base_url()?>">SUBMIT</a></li>
+            <li><a href="<?php echo base_url()?>index.php/home/leaderboard">LEADERBOARD</a></li>
+            <li><a href="#">RULES</a></li>
+            <li><a href="#">LOGOUT</a></li>
+          </ul>
+        </div>
+      </nav>
+      
+      <br><br><br>
+      <section>
+        <div class="container">
+          <div class="row">
+            
+            <div class="col s12">
+              <div class="boxhead center">
+                  <h3 style="font-size: 40px;">QUESTIONS</h3>
+              </div>
+            </div>
 
+            <div class="col s12">
+              <div class="box">
+                <table class="centered striped">
+                  <thead>
+                    <tr>
+                        <th data-field="id">ID</th>
+                        <th data-field="name">Name</th>
+                    </tr>
+                  </thead>
 
-</body>
-</html>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td><a href="<?php echo base_url()?>index.php/home/login/1">Question 1</a></td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td><a href="<?php echo base_url()?>index.php/home/login/2">Question 2</a></td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td><a href="<?php echo base_url()?>index.php/home/login/3">Question 3</a></td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td><a href="<?php echo base_url()?>index.php/home/login/4">Question 4</a></td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td><a href="<?php echo base_url()?>index.php/home/login/5">Question 5</a></td>
+                    </tr>
+                    <tr>
+                      <td>6</td>
+                      <td><a href="<?php echo base_url()?>index.php/home/login/6">Question 6</a></td>
+                    </tr>
+                    <tr>
+                      <td>7</td>
+                      <td><a href="<?php echo base_url()?>index.php/home/login/7">Question 7</a></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <br><br>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+      
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="<?php echo base_url() ?>js/materialize.min.js"></script>
+    </body>
+  </html>

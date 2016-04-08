@@ -1,0 +1,92 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+?>
+<!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="shortcut icon" type="image/x-icon" href="img/icon.png">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="css/style.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <body>
+
+      <nav>
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo"><img src="img/head.png"></a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="<?php echo base_url()?>index.php/home/questions">HOME</a></li>
+            <li><a href="#">LEADERBOARD</a></li>
+            <li><a href="#">RULES</a></li>
+            <li><a href="#">LOGOUT</a></li>
+          </ul>
+        </div>
+      </nav>
+      
+      <br><br><br>
+      <section>
+        <div class="container">
+          <div class="row">
+            
+            <div class="col s12">
+              <div class="boxhead center">
+                  <h3 style="font-size: 40px;">IDE</h3>
+              </div>
+            </div>
+
+            <div class="col s12">
+              <div class="box">
+                <form method="post" id="code" action="<?php echo base_url()?>index.php/Main/run">
+                  <select name="lang" id="lang">
+                  <option value="C">C</option>
+                  <option value="CPP">C++</option>
+                  <option value="JAVA">JAVA</option>
+                  <option value="PYTHON">Python</option>
+                </select>
+                  <select name="q_no" id="question">
+                  <option value="1">Question 1</option>
+                  <option value="2">Question 2</option>
+                  <option value="3">Question 3</option>
+                  <option value="4">Question 4</option>
+                </select><br>
+                  <textarea id="myInput" rows="30" cols="130" name="code" id="code"></textarea>
+                  <br>
+                  <button type="submit" value="Submit" id="run" >SUBMIT</button>
+                </form>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+      
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+      <script type="text/javascript">
+          var myInput = document.getElementById("myInput");
+          if(myInput.addEventListener ) {
+              myInput.addEventListener('keydown',this.keyHandler,false);
+          } else if(myInput.attachEvent ) {
+              myInput.attachEvent('onkeydown',this.keyHandler); /* damn IE hack */
+          }
+
+          function keyHandler(e) {
+              var TABKEY = 9;
+              if(e.keyCode == TABKEY) {
+                  this.value += "    ";
+                  if(e.preventDefault) {
+                      e.preventDefault();
+                  }
+                  return false;
+              }
+          }
+      </script>
+    </body>
+  </html>

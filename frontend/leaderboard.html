@@ -1,3 +1,6 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+?>
 <!DOCTYPE html>
   <html>
     <head>
@@ -18,7 +21,7 @@
         <div class="nav-wrapper">
           <a href="#" class="brand-logo"><img src="img/head.png"></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="#">HOME</a></li>
+            <li><a href="<?php echo base_url()?>index.php/home/questions">HOME</a></li>
             <li><a href="#">LEADERBOARD</a></li>
             <li><a href="#">RULES</a></li>
             <li><a href="#">LOGOUT</a></li>
@@ -43,98 +46,52 @@
                   <thead>
                     <tr>
                         <th data-field="id">Rank</th>
-                        <th data-field="name">Name</th>
-                        <th data-field="name">C/C++</th>
-                        <th data-field="name">Java</th>
-                        <th data-field="name">Python</th>
+                        <th data-field="name"> Team Name</th>
+                        <th data-field="name">Q1 C/C++</th>
+                        <th data-field="name">Q1 Java</th>
+                        <th data-field="name">Q1 Python</th>
+                        <th data-field="name">Q2 C/C++</th>
+                        <th data-field="name">Q2 Java</th>
+                        <th data-field="name">Q2 Python</th>
+                        <th data-field="name">Q3 C/C++</th>
+                        <th data-field="name">Q3 Java</th>
+                        <th data-field="name">Q3 Python</th>
+                        <th data-field="name">Q4 C/C++</th>
+                        <th data-field="name">Q4 Java</th>
+                        <th data-field="name">Q4 Python</th>
+                        <th data-field="name">Q5 C/C++</th>
+                        <th data-field="name">Q5 Java</th>
+                        <th data-field="name">Q5 Python</th>
                     </tr>
                   </thead>
 
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Name 1</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Name 2</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Name 3</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>Name 4</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                    </tr>
-                    <tr>
-                      <td>5</td>
-                      <td>Name 5</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                    </tr>
-                    <tr>
-                      <td>6</td>
-                      <td>Name 6</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                    </tr>
-                    <tr>
-                      <td>7</td>
-                      <td>Name 7</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                    </tr>
-                    <tr>
-                      <td>7</td>
-                      <td>Name 7</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                    </tr>
-                    <tr>
-                      <td>7</td>
-                      <td>Name 7</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                    </tr>
-                    <tr>
-                      <td>7</td>
-                      <td>Name 7</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                    </tr>
-                    <tr>
-                      <td>7</td>
-                      <td>Name 7</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                    </tr>
-                    <tr>
-                      <td>7</td>
-                      <td>Name 7</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                    </tr>
+                    <?php 
+                      $i=0;
+                      foreach ($leader as $row)
+                      { $i++;
+                        echo "<tr>";
+                          echo "<td>".$i."<br>";
+                          echo "<td> ".$row['username']." </td>";
+                          echo "<td> ".$row['total']." </td>";
+                          echo "<td> ".$row['1_cpp']." </td>";
+                          echo "<td> ".$row['1_java']." </td>";
+                          echo "<td> ".$row['1_python']." </td>";
+                          echo "<td> ".$row['2_cpp']." </td>";
+                          echo "<td> ".$row['2_java']." </td>";
+                          echo "<td> ".$row['2_python']." </td>";
+                          echo "<td> ".$row['3_cpp']." </td>";
+                          echo "<td> ".$row['3_java']." </td>";
+                          echo "<td> ".$row['3_python']." </td>";
+                          echo "<td> ".$row['4_cpp']." </td>";
+                          echo "<td> ".$row['4_java']." </td>";
+                          echo "<td> ".$row['4_python']." </td>";
+                          echo "<td> ".$row['5_cpp']." </td>";
+                          echo "<td> ".$row['5_java']." </td>";
+                          echo "<td> ".$row['5_python']." </td>";
+                        echo "</tr>";
+                      }
+                    ?>
                   </tbody>
                 </table>
               </div>

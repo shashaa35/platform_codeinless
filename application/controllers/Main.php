@@ -18,7 +18,7 @@ class Main extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	
+
 	function __Construct() {
 		parent::__Construct();
 		$this->load->model('ide_model');
@@ -35,7 +35,7 @@ class Main extends CI_Controller {
 		$username=$this->session->userdata('username');
 		if(empty($username))
 		{
-			
+
 			$data['message']="please login to view";
 			$this->load->view('home.php',$data);
 			return;
@@ -45,11 +45,12 @@ class Main extends CI_Controller {
 	}
 	public function register()
 	{
+		// echo "sbdjhs";
 		$this->load->view('register.php');
 	}
 	public function signup()
 	{
-		
+
 		$username=$this->input->get("username");
 		$password=$this->input->get("password");
 		$status=$this->users_model->signup($username,$password);
@@ -125,6 +126,7 @@ class Main extends CI_Controller {
 	}
 
 	public function run(){
+		$basepath="/platform_codeinless/";
 		$username=$this->session->userdata('username');
 		if(empty($username))
 		{
@@ -138,7 +140,7 @@ class Main extends CI_Controller {
 		$q_no=$this->input->post("q_no");
 		$res=$this->ide_model->get_details($q_no);
 		$inp_filename=$res[0]['input_file'];
-		$input_file="C:/xampp/htdocs/ide/input_files/$inp_filename";
+		$input_file=$basepath."input_files/$inp_filename";
 		$input=file_get_contents($input_file);
 
 
@@ -148,7 +150,7 @@ class Main extends CI_Controller {
 		$config['memory']='262144'; //(OPTIONAL) Your memory limit in integer and in unit kb
 		$config['source']=$code;    	//(REQUIRED) Your properly formatted source code for which you want to use hackerEarth api
 		$config['input']=$input;     	//(OPTIONAL) Properly Formatted Input against which you have to test your source code, leave this empty if you are using file
-		$config['language']=$lang;   //(REQUIRED) 
+		$config['language']=$lang;   //(REQUIRED)
 
 	$curl = curl_init();
 	curl_setopt_array($curl, array(
@@ -165,7 +167,7 @@ class Main extends CI_Controller {
         				'input' => $config['input'],
                         'lang' => $config['language'])
 	));
-	// Send the request & returning response 
+	// Send the request & returning response
 	$data=json_decode(curl_exec($curl), true);
 	$compile_status=$data['compile_status'];
 	if($compile_status==="OK")
@@ -173,10 +175,10 @@ class Main extends CI_Controller {
 		//correct output file
 		$data['message']="COMPILATION PASSED<br>";
 		$out_filename=$res[0]['output_file'];
-		$output_file="C:/xampp/htdocs/ide/output_files/$out_filename";
+		$output_file=$basepath."output_files/$out_filename";
 		$str=file_get_contents($output_file);
 		$str=explode("\n",$str);
-		
+
 		//user's output
 		$str1=$data['run_status']['output'];
 		$res=explode("\n",$str1);
@@ -188,22 +190,22 @@ class Main extends CI_Controller {
 		{
 		for($i=0;$i<sizeof($res)-1;$i++)
 		{
-				
+
 			if(strcmp(trim($res[$i]),trim($str[$i]))!=0)
 			{
-			
+
 				$flag=0;
 				//var_dump($str[$i]);
 				//var_dump($res[$i]);
 				 // echo $str[$i]." ".$res[$i]."<br>";
 			}
-			// else $str[$i]." ".$res[$i]."<br>";	
+			// else $str[$i]." ".$res[$i]."<br>";
 		}
 	}
 	else
 		{$flag=0;
 			}
-		if ($flag==1) 
+		if ($flag==1)
 		{
 			$data['message'].="CORRECT ANSWER!!";
 			$length=strlen($code);
@@ -221,10 +223,10 @@ class Main extends CI_Controller {
 		$data['message']="Please refresh this page again ..<br>Net is not working ..";
 	}
 	else
-	{	
+	{
 		$data['message']="compilation not passed";
 	}
-	$this->load->view("status.php",$data);	
+	$this->load->view("status.php",$data);
 	}
 
 }

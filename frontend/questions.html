@@ -1,3 +1,6 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+?>
 <!DOCTYPE html>
   <html>
     <head>
@@ -18,8 +21,9 @@
         <div class="nav-wrapper">
           <a href="#" class="brand-logo"><img src="img/head.png"></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="#">HOME</a></li>
-            <li><a href="#">LEADERBOARD</a></li>
+            <li><a href="<?php echo base_url()?>index.php/home/questions">HOME</a></li>
+            <li><a href="<?php echo base_url()?>">SUBMIT</a></li>
+            <li><a href="<?php echo base_url()?>index.php/home/leaderboard">LEADERBOARD</a></li>
             <li><a href="#">RULES</a></li>
             <li><a href="#">LOGOUT</a></li>
           </ul>
@@ -50,31 +54,31 @@
                   <tbody>
                     <tr>
                       <td>1</td>
-                      <td>Question 1</td>
+                      <td><a href="<?php echo base_url()?>index.php/home/login/1">Question 1</a></td>
                     </tr>
                     <tr>
                       <td>2</td>
-                      <td>Question 2</td>
+                      <td><a href="<?php echo base_url()?>index.php/home/login/2">Question 2</a></td>
                     </tr>
                     <tr>
                       <td>3</td>
-                      <td>Question 3</td>
+                      <td><a href="<?php echo base_url()?>index.php/home/login/3">Question 3</a></td>
                     </tr>
                     <tr>
                       <td>4</td>
-                      <td>Question 1</td>
+                      <td><a href="<?php echo base_url()?>index.php/home/login/4">Question 4</a></td>
                     </tr>
                     <tr>
                       <td>5</td>
-                      <td>Question 5</td>
+                      <td><a href="<?php echo base_url()?>index.php/home/login/5">Question 5</a></td>
                     </tr>
                     <tr>
                       <td>6</td>
-                      <td>Question 6</td>
+                      <td><a href="<?php echo base_url()?>index.php/home/login/6">Question 6</a></td>
                     </tr>
                     <tr>
                       <td>7</td>
-                      <td>Question 7</td>
+                      <td><a href="<?php echo base_url()?>index.php/home/login/7">Question 7</a></td>
                     </tr>
                   </tbody>
                 </table>
