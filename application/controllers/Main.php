@@ -55,7 +55,11 @@ class Main extends CI_Controller {
 		$password=$this->input->get("password");
 		$status=$this->users_model->signup($username,$password);
 		if($status)
-			$this->load->view('welcome.php');
+		{
+			$message="Now Login to continue";
+			$data['message']=$message;
+			$this->load->view('home.php',$data);
+		}
 		else
 			echo "error";
 	}
@@ -126,7 +130,7 @@ class Main extends CI_Controller {
 	}
 
 	public function run(){
-		$basepath="/platform_codeinless/";
+		$basepath="/opt/lampp/htdocs/platform_codeinless/";
 		$username=$this->session->userdata('username');
 		if(empty($username))
 		{

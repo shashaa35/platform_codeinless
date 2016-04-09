@@ -21,11 +21,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="nav-wrapper">
           <a href="<?php echo base_url()?>index.php/home/questions" class="brand-logo"><img src="<?php echo base_url() ?>img/head.png"></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="<?php echo base_url()?>index.php/home/questions">HOME</a></li>
+            <li><a href="<?php echo base_url()?>index.php/home/questions">QUESTIONS</a></li>
             <li><a href="<?php echo base_url()?>">SUBMIT</a></li>
             <li><a href="<?php echo base_url()?>index.php/home/leaderboard">LEADERBOARD</a></li>
-            <li><a href="#">RULES</a></li>
-            <li><a href="#">LOGOUT</a></li>
+            <li><a href="<?php echo base_url()?>index.php/home/logout">LOGOUT</a></li>
           </ul>
         </div>
       </nav>

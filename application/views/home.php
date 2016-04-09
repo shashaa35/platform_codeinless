@@ -65,27 +65,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <h3>SIGN UP</h3>
             <br><br>
             <div class="row center">
-              <form class="col s12">
+              <form class="col s12" method="get" id="register" action="<?php echo base_url()?>index.php/Main/signup">
                 <div class="row">
                   <div class="input-field col s10">
                     <i class="material-icons prefix">account_circle</i>
-                    <input id="name" type="text">
+                    <input id="name" type="text" name="username">
                     <label for="name">Username</label>
                   </div>
                   <br>
                   <div class="input-field col s10">
                     <i class="material-icons prefix">lock</i>
-                    <input id="icon_telephone" type="password" class="password">
+                    <input id="icon_telephone" type="password" name="password" class="password">
                     <label for="icon_telephone">Password</label>
                   </div>
-                  <div class="input-field col s10">
-                    <i class="material-icons prefix">lock</i>
-                    <input id="icon_telephone" type="password" class="password">
-                    <label for="icon_telephone">Confirm Password</label>
-                  </div>
+                  
                 </div>
+                <button class="waves-effect waves-light btn btn-large" type="submit"  id="run">Sign Up</button>
               </form>
-              <a class="waves-effect waves-light btn btn-large">SIGN UP</a>
+              
             </div>
           </div>
         </div>

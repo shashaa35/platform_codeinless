@@ -24,8 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <li><a href="<?php echo base_url()?>index.php/home/questions">HOME</a></li>
             <li><a href="<?php echo base_url()?>">SUBMIT</a></li>
             <li><a href="<?php echo base_url()?>index.php/home/leaderboard">LEADERBOARD</a></li>
-            <li><a href="#">RULES</a></li>
-            <li><a href="#">LOGOUT</a></li>
+            <li><a href="<?php echo base_url()?>index.php/home/logout">LOGOUT</a></li>
           </ul>
         </div>
       </nav>

@@ -2,21 +2,62 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <!DOCTYPE html>
-<html>
-<head>
-	<title>Your Status</title>
-</head>
-<body>
-	<a href="<?php echo base_url()?>index.php/home/questions"><div style="height:20px;width:90px;box-shadow: 0px 0px 5px #888888">Back to questions</div></a>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url() ?>img/icon.png">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="<?php echo base_url() ?>css/materialize.min.css"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="<?php echo base_url() ?>css/style.css"  media="screen,projection"/>
 
-	<a href="<?php echo base_url()?>index.php/home/leaderboard"><div style="height:20px;width:100px;box-shadow: 0px 0px 5px #888888">Leaderboard</div></a>
-	<?php 
-	if($compile_status == "OK")
-		echo "<h2>$message </h2>";
-	else
-		echo "<h2> Error ocurred </h2><br><h4> $compile_status</h4>";
-	?>
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
 
+    <body>
 
-</body>
-</html>
+      <nav>
+        <div class="nav-wrapper">
+          <a href="<?php echo base_url()?>index.php/home/questions" class="brand-logo"><img src="<?php echo base_url() ?>img/head.png"></a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="<?php echo base_url()?>index.php/home/questions">HOME</a></li>
+            <li><a href="<?php echo base_url()?>">SUBMIT</a></li>
+            <li><a href="<?php echo base_url()?>index.php/home/leaderboard">LEADERBOARD</a></li>
+            <li><a href="<?php echo base_url()?>index.php/home/logout">LOGOUT</a></li>
+          </ul>
+        </div>
+      </nav>
+      
+      <br><br><br>
+      <section>
+        <div class="container">
+          <div class="row">
+            
+            <div class="col s12">
+              <div class="boxhead center">
+                  <h3 style="font-size: 40px;">STATUS</h3>
+              </div>
+            </div>
+
+            <div class="col s12">
+              <div class="box center">
+                <?php 
+                  if($compile_status == "OK")
+                    echo "<h4>$message </h4>";
+                  else
+                    echo "<p style='font-size:20px;''> Error ocurred <p><br><p> $compile_status</p>";
+                  ?>
+                <br>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+      
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="<?php echo base_url() ?>js/materialize.min.js"></script>
+    </body>
+  </html>
