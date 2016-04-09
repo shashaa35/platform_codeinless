@@ -42,7 +42,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
             <div class="col s12">
               <div class="box">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi placeat quibusdam perspiciatis quas accusantium repudiandae porro neque, ab numquam rerum amet quidem, quos vero veniam soluta excepturi nisi. Sed, reprehenderit!
+                <ul>
+                  <li style="padding-left:5px;">1. Each question is of 100 marks.</li>
+                  <li style="padding-left:5px;">2. Marking of each question is done on the basis of length of the code.</li>
+                  <li style="padding-left:5px;">3. Contestants have to solve 6 questions in 90 mins.</li>
+                  <li style="padding-left:5px;">4. Use of internet is NOT ALLOWED!</li>
+                </ul>
                 <br><br>
               </div>
             </div>
